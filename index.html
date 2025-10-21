@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Never Ending Story</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="music/theme.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- 音乐控制按钮 -->
+    <div class="music-control">
+        <button id="musicToggle">🎵</button>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">A Never Ending Story</h1>
+            <ul class="nav-menu">
+                <li><a href="#" data-page="home">首页/홈페이지</a></li>
+                <li><a href="#" data-page="gallery">相册/앨범</a></li>
+                <li><a href="#" data-page="mainline">本支/계보</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="page active">
+            <h2>家族首页/홈페이지</h2>
+            
+            <!-- 家族介绍区域 -->
+            <div class="family-intro-container">
+                <div class="intro-tabs">
+                    <button class="tab-button active" onclick="switchIntroTab('cn')">张氏家族史概述</button>
+                    <button class="tab-button" onclick="switchIntroTab('kr')">장씨 가족사 개요</button>
+                </div>
+                <div class="intro-content">
+                    <div id="intro-cn" class="intro-tab-content active">
+                        <p>为追忆先人、传承家风，特撰此家族史简述，以记我张氏五代传承之路。</p>
+
+                        <p>张氏家族源流已难详考，第一代先祖事迹已湮没于岁月，无从查起。至第二代，有三女二子，家族初具规模。本支曾祖父排行第五，为家中幼子，却以坚韧之志撑起一方家业，为人豪放仗义，深得族人敬重。</p>
+
+                        <p>曾祖父和曾祖母育有三子四女，子女皆成家立业，家族渐兴。其中，长子即我的祖父，早年丧母，父亲因公残疾，承父志、担家责，以"长兄为父"为信条，辛勤照顾兄妹，直到成家立业。</p>
+
+                        <p>至第四代，人丁兴旺，繁衍后代十四人，遍及各行各业。如今，家族成员遍布延边、北京、江苏、上海、韩国、美国等地，从事着经商、管理、服务、医疗等多种职业。</p>
+
+                        <p>如今，家族已传至第五代，从小学生到大学生，含苞待放，少年负壮气，奋烈自有时。</p>
+
+                        <p>虽无族谱详载，亦无显赫功名，但张氏家族以平凡之躯，行朴实之道，代代相承，生生不息。愿后人铭记根源，珍惜亲情，传承家风，奋发前行，书写属于新一代的家族篇章。</p>
+
+                        <p>—— 张效赫  敬撰 </p>
+
+                    </div>
+                    <div id="intro-kr" class="intro-tab-content">
+                        <p>선인을 추모하고, 가문의 계승을 위하여 이 가족사를 저술하며, 우리 장씨의 5대 전승의 길을 기록하였다.</p>
+
+                        <p>장씨 가문의 원류는 이미 자세히 살펴보기 어려웠고, 1세대 선조의 사적은 이미 세월에 파묻혀 조사할 길이 없었다. </p>
+
+                        <p>2세대에 3남 2녀를 기반으로 가문은 초보적인  규모를 갖추었다. 증조부는 서열 5위로, 강인한 의지로 가문의 생계를 지탱하였고, 사람됨이 호방하고 의리를 지키여, 후세에 많은 이야기를 남기였다.</p>
+
+                        <p>증조부와 증조모는 3남 4녀를 낳았고, 자식들이 모두 가정을 이루며 집안이 점점 흥성했다. 그중 장남 - 바로 나의 할아버지는 일찍 어머니를 여의였고, 아버지가  공상으로 불구가 되여, 일찍히 가문의 책임을 짊어졌으며 "맏형은 아부지의 역할을 해야한다"는 신조로 형제자매들이 가정을 이루기까지 애써 돌보았다. </p>
+
+                        <p>제4대에 이르러 후손이 14명으로 번성하여 가문이 흥성하였으며, 각 업종에 널리 퍼졌다. 현재 가족구성원은 연변, 북경, 강소, 상하이, 한국, 미국 등지에 널리 퍼져 있으며 경영, 관리, 서비스, 의료 등 다양한 직업에 종사하고 있다.</p>
+
+                        <p>현재 가족은 이미 5세대까지 전해졌으며, 초등학생에서 대학생에 이르기까지, 풋풋한 기운을 안고 힘차게 비약하길 약속하고있다.</p>
+
+                        <p>비록 족보에 상세히 기재되지 않았고 혁혁한 공명도 없었지만, 장씨가문은 평범하고 소박한 인간의 참된도리를 대대로 이어받아 끊임없이 삶의 터전을 가꾸어왔다.</p>
+
+                        <p>.  후세 사람들이 근원을 명심하고, 혈육의 정을 소중히 여기며, 가풍을 전승하고, 분발하여 새로운 세대에 속하는 가족의 장을 쓰기를 바란다.</p>
+
+                        <p>-- 장효혁  올림</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <p class="instruction-text">点击头像查看人物介绍，横向滑动页面查看全部内容</p>
+            <p class="instruction-text">사진을 클릭하여 인물소개를 열람하세요； 스와이프하여 전체 콘텐츠를 확인하세요</p>
+            <div class="tree-container">
+                <div id="homeGenealogyTree" class="family-tree">
+                    <!-- 总谱将在页面加载时自动显示 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 相册页面 -->
+        <section id="gallery" class="page">
+            <h2>家族相册/가족앨범</h2>
+            <!-- 滚动相册 -->
+            <div class="photo-carousel">
+                <div class="photo-container">
+                    <img id="carouselImage" src="images/picture/scroll/0001.jpg" alt="家族照片">
+                </div>
+                <div class="photo-controls">
+                    <button onclick="previousPhoto()">❮</button>
+                    <span id="photoCounter">1 / 10</span>
+                    <button onclick="nextPhoto()">❯</button>
+                </div>
+            </div>
+            <!-- 相册网格 -->
+            <div class="photo-gallery">
+                <div class="gallery-grid" id="photoGrid">
+                    <!-- 相册缩略图将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 总谱页面 -->
+        <section id="genealogy" class="page">
+            <h2>家族总谱/가족총보</h2>
+            <p class="instruction-text">点击头像查看人物介绍，横向滑动页面查看全部内容</p>
+            <p class="instruction-text">사진을 클릭하여 인물소개를 열람하세요； 스와이프하여 전체 콘텐츠를 확인하세요</p>
+            <div class="tree-container">
+                <div id="genealogyTree" class="family-tree">
+                    <p>点击"总谱"按钮查看完整的谱系</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 本支页面 -->
+        <section id="mainline" class="page">
+            <h2>本支谱系/가족계보</h2>
+            <p class="instruction-text">点击头像查看人物介绍，横向滑动页面查看全部内容</p>
+            <p class="instruction-text">사진을 클릭하여 인물소개를 열람하세요； 스와이프하여 전체 콘텐츠를 확인하세요</p>
+            <div class="tree-container">
+                <div id="mainlineTree" class="family-tree">
+                    <p>点击"本支"按钮查看主要支系的谱系</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 人物详情模态框 -->
+    <div id="personModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="personDetails"></div>
+        </div>
+    </div>
+
+    <!-- 相册大图预览模态框 -->
+    <div id="photoModal" class="photo-modal">
+        <span class="photo-modal-close" onclick="closePhotoModal()">&times;</span>
+        <div class="photo-modal-content">
+            <img id="modalImage" class="photo-modal-img" src="" alt="照片预览">
+        </div>
+    </div>
+
+    <script>
+        // 正确的父子关系家族网站JavaScript
+        console.log('开始加载正确父子关系版页面...');
+        
+        // 全局变量
+        let currentPhotoIndex = 0;
+        let familyData = [];
+        let musicPlaying = true;
+        let isLoading = false;
+        
+        const photoList = [
+            'images/picture/scroll/0001.jpg',
+            'images/picture/scroll/0002.jpg',
+            'images/picture/scroll/0003.jpg',
+            'images/picture/scroll/0004.jpg',
+            'images/picture/scroll/0005.jpg',
+            'images/picture/scroll/0006.jpg',
+            'images/picture/scroll/0007.jpg',
+            'images/picture/scroll/0008.jpg',
+            'images/picture/scroll/0009.jpg',
+            'images/picture/scroll/0025.jpg'
+        ];
+
+        const galleryPhotos = [
+            'images/picture/all/0011.jpg', 'images/picture/all/0012.jpg', 'images/picture/all/0013.jpg',
+            'images/picture/all/0014.jpg', 'images/picture/all/0015.jpg', 'images/picture/all/0016.jpg',
+            'images/picture/all/0018.jpg', 'images/picture/all/0019.jpg',
+            'images/picture/all/0020.jpg', 'images/picture/all/0021.jpg', 'images/picture/all/0022.jpg',
+            'images/picture/all/0023.jpg', 'images/picture/all/0024.jpg', 'images/picture/all/0025.jpg',
+            'images/picture/all/0026.jpg', 'images/picture/all/0027.jpg', 'images/picture/all/0028.jpg',
+            'images/picture/all/0029.jpg', 'images/picture/all/0031.jpg',
+            'images/picture/all/0032.jpg', 'images/picture/all/0033.jpg', 'images/picture/all/0035.jpg',
+            'images/picture/all/0036.jpg', 'images/picture/all/0037.jpg', 'images/picture/all/0038.jpg',
+            'images/picture/all/0039.jpg', 'images/picture/all/0040.jpg', 
+            'images/picture/all/0042.jpg', 'images/picture/all/0043.jpg',
+            'images/picture/all/0045.jpg', 'images/picture/all/0046.jpg', 'images/picture/all/0047.jpg',
+            'images/picture/all/0048.jpg', 'images/picture/all/0049.jpg', 'images/picture/all/0050.jpg',
+            'images/picture/all/29.jpg', 'images/picture/all/39.jpg'
+        ];
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM加载完成，开始初始化...');
+            loadFamilyData();
+            initializePhotoCarousel();
+            initializeGallery();
+            initializeMusic();
+            initializeNavigation();
+            
+            // 添加用户交互时自动播放音乐
+            document.addEventListener('click', function() {
+                const audio = document.getElementById('bgMusic');
+                if (audio && audio.paused) {
+                    audio.play().catch(function(error) {
+                        console.log('播放失败:', error);
+                    });
+                }
+            }, { once: true });
+            
+            console.log('初始化完成');
+        });
+        
+        // 加载家族数据
+        async function loadFamilyData() {
+            try {
+                console.log('开始加载家族数据...');
+                const response = await fetch('all-members.json');
+                familyData = await response.json();
+                console.log('家族数据加载完成，根成员数量:', familyData.length);
+                
+                // 分析数据结构
+                if (familyData.length > 0) {
+                    console.log('第一个根成员:', familyData[0].name);
+                    if (familyData[0].children) {
+                        console.log('第一代子女数量:', familyData[0].children.length);
+                    }
+                    
+                    // 验证数据结构完整性
+                    console.log('数据结构验证:');
+                    console.log('- 根成员ID:', familyData[0].id);
+                    console.log('- 根成员配偶:', familyData[0].spouse?.name || '无');
+                    console.log('- 数据源已更新，使用修正后的关联关系');
+
+                    // 立即在首页显示总谱
+                    const homeTree = document.getElementById('homeGenealogyTree');
+                    if (homeTree) {
+                        console.log('在首页显示总谱...');
+                        let allTreesHtml = '<div class="all-roots-container">';
+                        familyData.forEach((rootPerson, index) => {
+                            console.log(`构建第 ${index + 1} 个根成员的树: ${rootPerson.name}`);
+                            const treeHtml = buildProperFamilyTree(rootPerson);
+                            allTreesHtml += `<div class="root-tree-section">${treeHtml}</div>`;
+                        });
+                        allTreesHtml += '</div>';
+                        homeTree.innerHTML = allTreesHtml;
+                    }
+                }
+            } catch (error) {
+                console.error('加载家族数据失败:', error);
+            }
+        }
+        
+        // 初始化相册轮播
+        function initializePhotoCarousel() {
+            updatePhotoDisplay();
+            
+            let autoPlayTimer = null;
+            let userInteracted = false;
+            
+            // 开始自动播放
+            function startAutoPlay() {
+                if (autoPlayTimer) clearInterval(autoPlayTimer);
+                autoPlayTimer = setInterval(() => {
+                    if (document.getElementById('gallery').classList.contains('active') && !userInteracted) {
+                        nextPhoto();
+                    }
+                }, 5000);
+            }
+            
+            // 停止自动播放
+            function stopAutoPlay() {
+                userInteracted = true;
+                if (autoPlayTimer) {
+                    clearInterval(autoPlayTimer);
+                }
+                // 5秒后重置用户交互状态，恢复自动播放
+                setTimeout(() => {
+                    userInteracted = false;
+                    startAutoPlay();
+                }, 5000);
+            }
+            
+            // 监听用户交互
+            document.querySelector('.photo-controls').addEventListener('click', stopAutoPlay);
+            
+            // 开始自动播放
+            startAutoPlay();
+            
+            console.log('相册轮播初始化完成');
+        }
+        
+        // 更新照片显示
+        function updatePhotoDisplay() {
+            const image = document.getElementById('carouselImage');
+            const counter = document.getElementById('photoCounter');
+            
+            if (image && counter) {
+                image.src = photoList[currentPhotoIndex];
+                counter.textContent = `${currentPhotoIndex + 1} / ${photoList.length}`;
+            }
+        }
+        
+        // 上一张照片
+        function previousPhoto() {
+            currentPhotoIndex = (currentPhotoIndex - 1 + photoList.length) % photoList.length;
+            updatePhotoDisplay();
+        }
+        
+        // 下一张照片
+        function nextPhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoList.length;
+            updatePhotoDisplay();
+        }
+        
+        // 初始化音乐
+        function initializeMusic() {
+            const audio = document.getElementById('bgMusic');
+            if (audio) {
+                audio.volume = 0.3;
+                // 尝试自动播放
+                audio.play().catch(function(error) {
+                    console.log('自动播放被阻止，等待用户交互后播放');
+                });
+                console.log('音乐初始化完成');
+            }
+        }
+        
+        // 切换音乐播放/暂停
+        function toggleMusic() {
+            const audio = document.getElementById('bgMusic');
+            const button = document.getElementById('musicToggle');
+            
+            if (audio) {
+                if (musicPlaying) {
+                    audio.pause();
+                    button.textContent = '🔇';
+                    musicPlaying = false;
+                } else {
+                    audio.play();
+                    button.textContent = '🎵';
+                    musicPlaying = true;
+                }
+            }
+        }
+        
+        // 初始化导航
+        function initializeNavigation() {
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    if (pageId) {
+                        showPage(pageId);
+                    }
+                });
+            });
+            
+            // 音乐控制按钮
+            const musicToggle = document.getElementById('musicToggle');
+            if (musicToggle) {
+                musicToggle.addEventListener('click', toggleMusic);
+            }
+            
+            // 使用事件委托处理人物节点点击
+            document.addEventListener('click', function(e) {
+                const personNode = e.target.closest('.person-node');
+                if (personNode) {
+                    const personId = parseInt(personNode.getAttribute('data-person-id'));
+                    if (personId) {
+                        showPersonDetail(personId);
+                    }
+                }
+            });
+            
+            console.log('导航初始化完成');
+        }
+        
+        // 显示指定页面
+        function showPage(pageId) {
+            console.log('切换到页面:', pageId);
+            
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // 显示指定页面
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // 更新导航栏活动状态
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // 根据页面类型加载相应内容
+                if (pageId === 'mainline') {
+                    loadMainlineTree();
+                }
+            }
+        }
+        
+        // 加载总谱树形结构
+        function loadGenealogyTree() {
+            if (isLoading || !familyData.length) return;
+            isLoading = true;
+            
+            const container = document.getElementById('genealogyTree');
+            if (!container) {
+                isLoading = false;
+                return;
+            }
+            
+            console.log('开始加载总谱树...');
+            container.innerHTML = '<p>正在构建家族树...</p>';
+            
+            try {
+                // 构建完整的家族树 - 显示所有根成员及其后代
+                console.log(`总共有 ${familyData.length} 个根成员`);
+                
+                let allTreesHtml = '<div class="all-roots-container">';
+                
+                familyData.forEach((rootPerson, index) => {
+                    console.log(`构建第 ${index + 1} 个根成员的树: ${rootPerson.name}`);
+                    const treeHtml = buildProperFamilyTree(rootPerson);
+                    allTreesHtml += `<div class="root-tree-section">${treeHtml}</div>`;
+                });
+                
+                allTreesHtml += '</div>';
+                container.innerHTML = allTreesHtml;
+                
+                console.log('总谱树构建完成');
+            } catch (error) {
+                console.error('构建总谱树失败:', error);
+                container.innerHTML = '<p>构建家族树时出错，请刷新页面重试</p>';
+            }
+            
+            isLoading = false;
+        }
+        
+        // 加载本支树形结构
+        function loadMainlineTree() {
+            if (isLoading || !familyData.length) return;
+            isLoading = true;
+            
+            const container = document.getElementById('mainlineTree');
+            if (!container) {
+                isLoading = false;
+                return;
+            }
+            
+            console.log('开始加载本支树...');
+            container.innerHTML = '<p>正在构建本支树...</p>';
+            
+            try {
+                // 只显示第一个成员及其后代
+                const rootPerson = familyData[0];
+                const treeHtml = buildProperFamilyTree(rootPerson);
+                container.innerHTML = treeHtml;
+                
+                console.log('本支树构建完成');
+            } catch (error) {
+                console.error('构建本支树失败:', error);
+                container.innerHTML = '<p>构建本支树时出错，请刷新页面重试</p>';
+            }
+            
+            isLoading = false;
+        }
+        
+        // 构建真正的树形结构（父母-子女垂直关系）
+        function buildProperFamilyTree(rootPerson) {
+            if (!rootPerson) return '';
+            
+            // 全局访问记录，防止重复显示
+            const globalVisited = new Set();
+            
+            // 预处理数据，建立正确的父子关系映射
+            function preprocessData() {
+                const personMap = new Map();
+                const parentChildMap = new Map(); // 父母ID -> 子女ID数组
+                
+                console.log('开始预处理家族数据...');
+                
+                // 递归收集所有人物
+                function collectAllPersons(person, visited = new Set(), depth = 0) {
+                    if (!person || visited.has(person.id) || depth > 15) {
+                        if (depth > 15) console.warn('达到最大递归深度，停止处理');
+                        return;
+                    }
+                    
+                    visited.add(person.id);
+                    console.log(`处理第${depth}层人物: ${person.name} (ID: ${person.id})`);
+                    
+                    // 存储人物信息
+                    if (!personMap.has(person.id)) {
+                        personMap.set(person.id, person);
+                    }
+                    
+                    // 处理子女关系
+                    if (person.children && person.children.length > 0) {
+                        const childrenIds = [];
+                        person.children.forEach(child => {
+                            // 确保子女不是配偶，并且有有效的ID
+                            if (child && child.id && child.id !== person.spouse?.id) {
+                                childrenIds.push(child.id);
+                                collectAllPersons(child, visited, depth + 1);
+                            }
+                        });
+                        if (childrenIds.length > 0) {
+                            parentChildMap.set(person.id, childrenIds);
+                            console.log(`${person.name} 的子女: ${childrenIds.length}个`);
+                        }
+                    }
+                    
+                    // 处理配偶（不递归处理配偶的子女，避免重复）
+                    if (person.spouse && person.spouse.id && !visited.has(person.spouse.id)) {
+                        visited.add(person.spouse.id);
+                        if (!personMap.has(person.spouse.id)) {
+                            personMap.set(person.spouse.id, person.spouse);
+                            console.log(`添加配偶: ${person.spouse.name} (ID: ${person.spouse.id})`);
+                        }
+                    }
+                }
+                
+                collectAllPersons(rootPerson);
+                console.log(`预处理完成: 共收集 ${personMap.size} 个人物`);
+                return { personMap, parentChildMap };
+            }
+            
+            const { personMap, parentChildMap } = preprocessData();
+            
+            // 递归构建树形节点
+            function buildTreeNode(personId, depth = 0) {
+                if (!personId || globalVisited.has(personId) || depth > 12) {
+                    if (depth > 12) console.warn(`达到最大显示深度，停止构建节点: ${personId}`);
+                    return '';
+                }
+                
+                const person = personMap.get(personId);
+                if (!person) {
+                    console.warn(`未找到人物信息: ${personId}`);
+                    return '';
+                }
+                
+                globalVisited.add(personId);
+                console.log(`构建第${depth}层节点: ${person.name}`);
+                
+                let html = '<div class="tree-node">';
+                
+                // 构建父母节点（夫妻）
+                html += '<div class="parents-container">';
+                
+                if (person.spouse && person.spouse.id && personMap.has(person.spouse.id)) {
+                    const spouse = personMap.get(person.spouse.id);
+                    html += '<div class="couple-group">';
+                    
+                    // 根据性别决定显示顺序（男左女右）
+                    if (person.sex === '男') {
+                        html += createPersonNode(person);
+                        html += '<div class="marriage-line"></div>';
+                        html += createPersonNode(spouse);
+                    } else {
+                        html += createPersonNode(spouse);
+                        html += '<div class="marriage-line"></div>';
+                        html += createPersonNode(person);
+                    }
+                    html += '</div>';
+                    
+                    // 标记配偶为已访问
+                    globalVisited.add(person.spouse.id);
+                    console.log(`夫妻节点: ${person.name} ♥ ${spouse.name}`);
+                } else {
+                    // 单身父母
+                    html += '<div class="single-parent">';
+                    html += createPersonNode(person);
+                    html += '</div>';
+                    console.log(`单身节点: ${person.name}`);
+                }
+                
+                html += '</div>';
+                
+                // 如果有子女，构建子女节点
+                const childrenIds = parentChildMap.get(personId);
+                if (childrenIds && childrenIds.length > 0) {
+                    // 过滤掉已访问的子女
+                    const unvisitedChildren = childrenIds.filter(childId => 
+                        !globalVisited.has(childId) && personMap.has(childId)
+                    );
+                    
+                    if (unvisitedChildren.length > 0) {
+                        html += '<div class="parent-child-connector"></div>';
+                        html += '<div class="children-container">';
+                        // 添加兄弟连接线作为HTML元素
+                        html += '<div class="sibling-horizontal-line"></div>';
+                        
+                        // 创建子女水平容器
+                        html += '<div class="siblings-row">';
+                        
+                        unvisitedChildren.forEach((childId, index) => {
+                            // 为每个子女添加垂直连接线
+                            html += '<div class="child-wrapper">';
+                            html += '<div class="child-vertical-line"></div>';
+                            html += buildTreeNode(childId, depth + 1);
+                            html += '</div>';
+                        });
+                        
+                        html += '</div>';
+                        html += '</div>';
+                    }
+                }
+                
+                html += '</div>';
+                return html;
+            }
+            
+            return '<div class="family-tree-wrapper">' + buildTreeNode(rootPerson.id) + '</div>';
+        }
+        
+        // 创建人物节点HTML
+        function createPersonNode(person) {
+            if (!person) return '';
+            
+            const photo = person.photo || 'images/gallery/default-m.jpg';
+            const name = person.name || '未知';
+            
+            return `
+                <div class="person-node" data-person-id="${person.id}">
+                    <img src="${photo}" alt="${name}" class="person-avatar" onerror="this.src='images/gallery/default-m.jpg'">
+                    <div class="person-name">${name}</div>
+                </div>
+            `;
+        }
+        
+        // 显示人物详情
+        function showPersonDetail(personId) {
+            const person = findPersonById(personId);
+            if (!person) {
+                console.log('未找到人物:', personId);
+                return;
+            }
+            
+            const modal = document.getElementById('personModal');
+            const details = document.getElementById('personDetails');
+            
+            if (modal && details) {
+                details.innerHTML = createPersonDetailHTML(person);
+                modal.style.display = 'block';
+                console.log('显示人物详情:', person.name);
+            }
+        }
+        
+        // 根据ID查找人员
+        function findPersonById(id) {
+            function searchInPerson(person) {
+                if (person.id === id) return person;
+                
+                if (person.children) {
+                    for (let child of person.children) {
+                        const found = searchInPerson(child);
+                        if (found) return found;
+                    }
+                }
+                
+                if (person.spouse) {
+                    const found = searchInPerson(person.spouse);
+                    if (found) return found;
+                }
+                
+                return null;
+            }
+            
+            for (let person of familyData) {
+                const found = searchInPerson(person);
+                if (found) return found;
+            }
+            
+            return null;
+        }
+        
+        // 创建人物详情HTML
+        function createPersonDetailHTML(person) {
+            if (!person) return '';
+            
+            return `
+                <div class="person-detail">
+                    <div class="person-detail-header">
+                        <div class="person-photo-large">
+                            <img src="${person.photo || 'images/gallery/default-m.jpg'}" 
+                                alt="${person.name || '未知'}" 
+                                onerror="this.src='images/gallery/default.png'"
+                                class="detail-photo">
+                        </div>
+                        <div class="person-basic-info">
+                            <h3>${person.name || '未知'} / ${person.nameKorea || ''}</h3>
+                            
+                            <div class="basic-info-grid">
+                                <div class="detail-row">
+                                    <div class="detail-label">姓名</div>
+                                    <div class="detail-value">
+                                        <div class="bilingual-text">
+                                            <div class="chinese-text">${person.name || '未知'}</div>
+                                            <div class="korean-text">${person.nameKorea || ''}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="detail-row">
+                                    <div class="detail-label">排行</div>
+                                    <div class="detail-value">第${person.order || '?'}个</div>
+                                </div>
+                                
+                                <div class="detail-row">
+                                    <div class="detail-label">性别</div>
+                                    <div class="detail-value">${person.sex || '未知'}</div>
+                                </div>
+                                
+                                <div class="detail-row">
+                                    <div class="detail-label">出生日期</div>
+                                    <div class="detail-value">${person.birth || '未知'}</div>
+                                </div>
+                                
+                                <div class="detail-row">
+                                    <div class="detail-label">离世日期</div>
+                                    <div class="detail-value">${person.death || '健在'}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">职业</div>
+                        <div class="detail-value">${person.job || '未知'}</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">居住地</div>
+                        <div class="detail-value">${person.residence || '未知'}</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">人物纪要</div>
+                        <div class="detail-value">
+                            <div class="bilingual-text">
+                                <div class="chinese-text">${person.introduce || '暂无介绍'}</div>
+                                <div class="korean-text">${person.introduceKorea || ''}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 初始化相册
+        function initializeGallery() {
+            const photoGrid = document.getElementById('photoGrid');
+            if (!photoGrid) return;
+
+            // 创建所有相册缩略图
+            galleryPhotos.forEach((photo, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `<img src="${photo}" alt="照片 ${index + 1}" loading="lazy">`;
+                
+                // 添加点击事件
+                galleryItem.addEventListener('click', () => {
+                    openPhotoModal(photo);
+                });
+                
+                photoGrid.appendChild(galleryItem);
+            });
+            
+            console.log('相册初始化完成');
+        }
+
+        // 打开照片预览模态框
+        function openPhotoModal(photoSrc) {
+            const modal = document.getElementById('photoModal');
+            const modalImg = document.getElementById('modalImage');
+            if (modal && modalImg) {
+                modalImg.src = photoSrc;
+                modal.style.display = 'block';
+            }
+        }
+
+        // 关闭照片预览模态框
+        function closePhotoModal() {
+            const modal = document.getElementById('photoModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // 关闭人物详情模态框
+        function closeModal() {
+            const modal = document.getElementById('personModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const personModal = document.getElementById('personModal');
+            const photoModal = document.getElementById('photoModal');
+            
+            if (event.target === personModal) {
+                closeModal();
+            } else if (event.target === photoModal) {
+                closePhotoModal();
+            }
+        }
+        
+        // 键盘事件处理
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closePhotoModal();
+            } else if (event.key === 'ArrowLeft' && document.getElementById('home').classList.contains('active')) {
+                previousPhoto();
+            } else if (event.key === 'ArrowRight' && document.getElementById('home').classList.contains('active')) {
+                nextPhoto();
+            }
+        });
+        
+        // 触摸事件处理（移动端）
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            // 只在首页轮播图激活时处理滑动
+            if (document.getElementById('home').classList.contains('active') && Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // 左滑，下一张
+                    nextPhoto();
+                } else {
+                    // 右滑，上一张
+                    previousPhoto();
+                }
+            }
+        }
+        
+        // 切换介绍标签
+        function switchIntroTab(lang) {
+            // 切换按钮状态
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            const activeButton = document.querySelector(`.tab-button[onclick="switchIntroTab('${lang}')"]`);
+            if (activeButton) activeButton.classList.add('active');
+            
+            // 切换内容
+            const contents = document.querySelectorAll('.intro-tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            const activeContent = document.getElementById(`intro-${lang}`);
+            if (activeContent) activeContent.classList.add('active');
+        }
+
+        console.log('正确父子关系版页面脚本加载完成');
+    </script>
+</body>
+</html>

@@ -1,0 +1,1041 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'SimSun', sans-serif;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* 音乐控制按钮 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-control button {
+    background: rgba(52, 73, 94, 0.8);
+    border: 2px solid #3498db;
+    color: #ecf0f1;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.music-control button:hover {
+    background: rgba(52, 152, 219, 0.8);
+    transform: scale(1.1);
+}
+
+/* 导航栏 */
+.navbar {
+    background: rgba(44, 62, 80, 0.95);
+    padding: 1rem 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #3498db;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-title {
+    color: #3498db;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    transform: translateY(-2px);
+}
+
+.nav-menu a.active {
+    background: #3498db;
+    color: #2c3e50;
+}
+
+/* 主内容区域 */
+.main-content {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page h2 {
+    text-align: center;
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.instruction-text {
+    text-align: center;
+    color: #ecf0f1;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* 首页轮播图样式 */
+.photo-carousel {
+    background: rgba(52, 73, 94, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.photo-container {
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.photo-container img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.photo-container img:hover {
+    transform: scale(1.02);
+}
+
+.photo-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.photo-controls button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.photo-controls button:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+#photoCounter {
+    font-size: 1.1rem;
+    color: #ecf0f1;
+    font-weight: 500;
+}
+
+/* 相册网格样式 */
+.photo-gallery {
+    background: rgba(52, 73, 94, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 大图预览模态框 */
+.photo-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.photo-modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.photo-modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+.photo-modal-close:hover {
+    color: #e74c3c;
+}
+
+/* 响应式相册样式 */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .photo-gallery {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.5rem;
+    }
+}
+
+/* 家族介绍区域样式 */
+.family-intro-container {
+    background: rgba(52, 73, 94, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.intro-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.tab-button {
+    background: rgba(52, 73, 94, 0.8);
+    color: #ecf0f1;
+    border: 2px solid #3498db;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+}
+
+.tab-button.active {
+    background: #3498db;
+    color: #2c3e50;
+}
+
+.intro-content {
+    position: relative;
+}
+
+.intro-tab-content {
+    display: none;
+    padding: 1rem;
+    line-height: 1.8;
+    color: #ecf0f1;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.intro-tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* 树形结构样式 */
+.tree-container {
+    background: rgba(52, 73, 94, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+}
+
+.family-tree {
+    min-width: 100%;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* 人物节点样式 */
+.person-node {
+    display: block;
+    margin: 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 60px;
+    height: 140px; /* 设置固定高度：头像60px + 上下margin/padding + 4个字的高度 */
+    text-align: center;
+}
+
+.person-node:hover {
+    transform: scale(1.05);
+}
+
+.person-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #3498db;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.person-node:hover .person-avatar {
+    border-color: #e74c3c;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+}
+
+.person-name {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ecf0f1;
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 所有根成员容器 */
+.all-roots-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4rem;
+    width: 100%;
+    min-height: 400px;
+    min-width: max-content;
+    padding: 2rem;
+    overflow-x: auto;
+}
+
+/* 单个根成员树形区域 */
+.root-tree-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 300px;
+}
+
+/* 家族树包装器 */
+.family-tree-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 400px;
+    min-width: max-content;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+/* 树形节点 */
+.tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;  /* 减小节点的外边距 */
+    position: relative;
+    flex-shrink: 0;
+    width: fit-content;
+}
+
+/* 父母容器 */
+.parents-container {
+    display: flex;
+    justify-content: center;
+    align-items: start; /* 改为顶部对齐 */
+    margin-bottom: 1rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 单身父母 */
+.single-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+}
+
+/* 夫妻节点样式 */
+.couple-group {
+    display: flex;
+    align-items: start; /* 改为顶部对齐 */
+    gap: 0.5rem;
+    position: relative;
+    width: fit-content;
+}
+
+.couple-group .person-avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.couple-group .person-node {
+    width: 60px;
+}
+
+.couple-group .person-name {
+    font-size: 0.8rem;
+}
+
+/* 婚姻连接线 */
+.marriage-line {
+    width: 20px;
+    height: 2px;
+    background-color: #e74c3c;
+    position: relative;
+}
+
+.marriage-line::before {
+    content: '♥';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #e74c3c;
+    font-size: 12px;
+}
+
+/* 子女容器已在下方重新定义 */
+
+/* 父子连接线 */
+.parent-child-connector {
+    width: 2px;
+    height: 40px;
+    background-color: #3498db;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* 父子连接器圆点 - 保留 */
+.parent-child-connector::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #3498db;
+    border-radius: 50%;
+}
+
+/* 子女容器连接线系统 */
+.children-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    margin-top: 0;
+    flex-wrap: nowrap;
+    overflow: visible;
+    min-width: 100%;
+    position: relative;
+    padding: 0;
+}
+
+/* 兄弟姐妹水平连接线 - HTML元素版本 */
+.sibling-horizontal-line {
+    width: 100%;
+    height: 3px;
+    background: #3498db;
+    border-radius: 1px;
+    box-shadow: 0 1px 3px rgba(52, 152, 219, 0.3);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* 兄弟姐妹水平排列 */
+.siblings-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: start; /* 确保子元素顶部对齐 */
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* 子女包装器 */
+.child-wrapper {
+    position: relative;
+    height: 100%;
+    display: block;  /* 改用块级布局 */
+}
+
+/* 每个子女的垂直连接线 - HTML元素版本 */
+.child-vertical-line {
+    position: absolute;
+    top: -12px;
+    left: 50%;  /* 使用百分比定位 */
+    transform: translateX(-50%);  /* 向左偏移自身宽度的一半，实现完全居中 */
+    width: 2px;
+    height: 12px;
+    background: #3498db;
+    border-radius: 1px;
+    box-shadow: 0 1px 2px rgba(52, 152, 219, 0.3);
+}
+
+/* 兄弟姐妹分隔符 - 不再需要，使用连接线代替 */
+.sibling-separator {
+    display: none;
+}
+
+/* 树形连接线 */
+.tree-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.connection-line {
+    stroke: #3498db;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* 保留一些旧样式以防兼容性问题，但不再使用 */
+.generation {
+    display: none;
+}
+
+.generation-label {
+    display: none;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 2px solid #3498db;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.close:hover {
+    color: #e74c3c;
+}
+
+.person-detail {
+    color: #ecf0f1;
+}
+
+.person-detail-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.person-photo-large {
+    flex-shrink: 0;
+    width: 270px;
+    height: 270px;
+    border-radius: 10px;
+    overflow: hidden;
+    /*box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+    border: 3px solid #3498db;*/
+}
+
+.detail-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.detail-photo:hover {
+    transform: scale(1.05);
+}
+
+.person-basic-info {
+    flex: 1;
+}
+
+.basic-info-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.basic-info-grid .detail-row {
+    margin-bottom: 0;
+    padding-bottom: 0.3rem;
+}
+
+.person-detail h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #3498db;
+    min-width: 100px;
+    margin-right: 1rem;
+}
+
+.detail-value {
+    flex: 1;
+}
+
+.bilingual-text {
+    margin-bottom: 0.3rem;
+}
+
+.chinese-text {
+    color: #ecf0f1;
+}
+
+.korean-text {
+    color: #bdc3c7;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    .nav-title {
+        font-size: 1.5rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .nav-menu a {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .main-content {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .page h2 {
+        font-size: 2rem;
+    }
+    
+    .photo-carousel,
+    .tree-container {
+        padding: 1rem;
+    }
+    
+    .person-avatar {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .person-node {
+        width: 50px;
+        height: 120px; /* 移动端稍微减小高度 */
+    }
+    
+    .couple-group .person-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .couple-group .person-node {
+        width: 40px;
+    }
+    
+    .single-parent {
+        width: 50px;
+    }
+    
+    .person-name {
+        font-size: 0.8rem;
+    }
+    
+    .couple-group .person-name {
+        font-size: 0.7rem;
+    }
+    
+    .marriage-line {
+        width: 15px;
+    }
+    
+    .parent-child-connector {
+        height: 30px;
+    }
+    
+    .sibling-horizontal-line {
+        margin: 0;
+        height: 3px;
+    }
+    
+    .child-vertical-line {
+        top: -12px;
+        height: 12px;
+        width: 2px;
+    }
+    
+    .children-container {
+        gap: 0;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 0;
+        margin-top: 0;
+    }
+    
+    .siblings-row {
+        margin-top: 12px;
+        gap: 0.5rem;  /* 移动端进一步减小间距 */
+    }
+    
+    .all-roots-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+        align-items: center;
+    }
+    
+    .root-tree-section {
+        min-width: 100%;
+    }
+    
+    .family-tree-wrapper {
+        padding: 1rem;
+        justify-content: center;
+    }
+    
+    .tree-node {
+        margin: 0.1rem;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .person-detail-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .person-photo-large {
+        width: 140px;
+        height: 140px;
+    }
+
+    .person-basic-info {
+        width: 100%;
+    }
+
+    .basic-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-row {
+        flex-direction: column;
+    }
+    
+    .detail-label {
+        margin-bottom: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-title {
+        font-size: 1.3rem;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .page h2 {
+        font-size: 1.8rem;
+    }
+    
+    .person-avatar {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .person-node {
+        width: 45px;
+        height: 110px; /* 小屏幕进一步减小高度 */
+    }
+    
+    .couple-group .person-avatar {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .couple-group .person-node {
+        width: 35px;
+    }
+    
+    .single-parent {
+        width: 45px;
+    }
+    
+    .person-name {
+        font-size: 0.7rem;
+    }
+    
+    .couple-group .person-name {
+        font-size: 0.6rem;
+    }
+    
+    .marriage-line {
+        width: 12px;
+    }
+    
+    .parent-child-connector {
+        height: 20px;
+    }
+    
+    .sibling-horizontal-line {
+        margin: 0;
+        height: 2px;
+    }
+    
+    .child-vertical-line {
+        top: -10px;
+        height: 10px;
+        width: 2px;
+        left: 22.5px;  /* 移动端头像宽度为45px的一半 */
+    }
+    
+    .children-container {
+        gap: 0;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 0;
+        margin-top: 0;
+    }
+    
+    .siblings-row {
+        margin-top: 10px;
+    }
+    
+    .tree-node {
+        margin: 0.25rem;
+        width: fit-content;
+    }
+    
+    .all-roots-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+    
+    .root-tree-section {
+        min-width: 100%;
+    }
+    
+    .family-tree-wrapper {
+        min-width: 100%;
+        padding: 0.5rem;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(52, 73, 94, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
